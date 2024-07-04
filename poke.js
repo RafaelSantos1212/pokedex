@@ -3,6 +3,12 @@ const pokeAPI = {};
 function converterPokemon(pokemonJson) {
     const pokemon = new Pokemon() // a const pokemon é uma istância da classe pokemon, isso serve pra facilitar a maneira de chamar o pokemon
     pokemon.nome = pokemonJson.name //  pokemon.nome vira o nome do pokemonJson(os pokemons da url)
+    pokemon.id = pokemonJson.id
+    pokemon.altura = pokemonJson.height
+    pokemon.foto = pokemonJson.sprites.other.dream_world.front_default // *
+    pokemon.habilidades[0] = pokemonJson.abilities[0].ability.name
+    pokemon.habilidades[1] = pokemonJson.abilities[1].ability.name
+    pokemon.peso = pokemonJson.weight
     return pokemon //return é necessário para que o pokemon exista
 }
 
