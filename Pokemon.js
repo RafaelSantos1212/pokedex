@@ -5,15 +5,17 @@ class Pokemon {
     id;
     nome;
     peso;
-    principalTipo;
-    tipos = ["tipo1", "tipo2"];
+    tipoPrincipal;
+    tipo0;
+    tipo1;
+    tipos = [0, 1];
     stats = {
-        health: null,
-        atk: null,
+        saude: null,
+        ata: null,
         def: null,
-        specialAtk: null,
-        specialDef: null,
-        speed: null,
-        iv: null,
+        ataqueEspecial: null,
+        defesaEspecial: null,
+        velocidade: null,
+        total: null,
     }
 }

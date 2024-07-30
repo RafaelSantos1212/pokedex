@@ -1,18 +1,41 @@
-let botao = document.getElementById('botao')
-let lista = document.getElementById('pokemonLista'),
-    limiteURL = 2,
-    limiteOffset = 0;
+const BOTAO = document.getElementById('botao'),
+    LISTA = document.getElementById('pokemonLista'),
+    LIMITE_URL = 10;
+let offset = 0;
 
-pokeAPI.pegarPokemon(limiteURL, limiteOffset)
-    .then((pokemonLista = []) => {
-        lista.innerHTML += pokemonLista.map((pokemon) => `<li>ID: ${pokemon.id} / ${pokemon.nome} / ${pokemon.altura}cm / ${pokemon.foto} / ${pokemon.habilidades} ${pokemon.peso}</li>`).join("")
-    })
+const TOTAL_POKEMONS_EXIBIDOS = 151;
 
-botao.addEventListener("click", () => {
-    limiteOffset += limiteURL
-
-    pokeAPI.pegarPokemon(limiteURL, limiteOffset)
+function carregarPokemons(LIMITE_URL, offset) {
+    pokeAPI.pegarPokemon(LIMITE_URL, offset)
         .then((pokemonLista = []) => {
-            lista.innerHTML += pokemonLista.map((pokemon) => `<li>ID: ${pokemon.id} / ${pokemon.nome} / ${pokemon.altura}cm / ${pokemon.foto} / ${pokemon.habilidades} ${pokemon.peso}</li>`).join("")
+            LISTA.innerHTML += pokemonLista.map((pokemon) => `
+            <a href="pokemon/?id=${pokemon.id}">
+            <li class="pokemon-card ${pokemon.tipoPrincipal}">
+                <img class="pokemonFoto" src="${pokemon.foto}"
+                alt="${pokemon.nome}">
+                <h2>${pokemon.nome} - ID: ${pokemon.id}</h2>
+                <p>Altura: ${pokemon.altura}<p>
+                <p>Peso: ${pokemon.peso}<p>
+                <p>Habilidades: ${pokemon.habilidades}<p>
+                <p>Tipo: ${pokemon.tipos}</p>
+                <p>${pokemon.stats.total}<p>
+            </li>
+            </a>
+            `).join("")
         })
-})
+}
+
+carregarPokemons(LIMITE_URL, offset);
+
+BOTAO.addEventListener("click", () => {
+    offset += LIMITE_URL
+    const POKEMONS_EXIBIDOS = LIMITE_URL + offset,
+    NOVOS_POKEMONS = TOTAL_POKEMONS_EXIBIDOS - offset;
+
+    if (POKEMONS_EXIBIDOS >= TOTAL_POKEMONS_EXIBIDOS) {
+        carregarPokemons(NOVOS_POKEMONS, offset)
+        BOTAO.style.display = "none"
+    }
+else{
+    carregarPokemons(LIMITE_URL, offset)
+}})
