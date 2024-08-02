@@ -6,8 +6,6 @@ class Pokemon {
     nome;
     peso;
     tipoPrincipal;
-    tipo0;
-    tipo1;
     tipos = [0, 1];
     stats = {
         saude: null,

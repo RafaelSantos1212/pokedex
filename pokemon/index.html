@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body>
-<h1>Detalhes do Pokémon</h1>
-<p>
-Nome do pokémon: <span id="nomeDoPokemon"></span>
-</p>
 
-<script src="../Pokemon.js"></script> <!-- ../ serve para buscar um arquivo em uma pasta anterior à atual (pokedex)  -->
-<script src="../poke.js"></script>
-<script src="app.js"></script>
+<body>
+    <main class="w-full text-center">
+        <h1>Detalhes do Pokémon</h1> <br>
+        <p>
+            Nome do pokémon: <span id="nomeDoPokemon" class="capitalize"></span> <br>
+            ID: <span id="idDoPokemon"></span> <br>
+            <span id="tipoDoPokemon" class="capitalize"></span> <br>
+            <span id="tipoPrincipalDoPokemon" class="capitalize"></span>
+            HP: <span id="hpDoPokemon"></span> <br>
+            Ataque: <span id="ataqueDoPokemon"></span> <br>
+            Ataque Especial: <span id="ataqueEspecialDoPokemon"></span> <br>
+            Defesa: <span id="defesaDoPokemon"></span> <br>
+            Defesa Especial: <span id="defesaEspecialDoPokemon"></span> <br>
+            Velocidade: <span id="velocidadeDoPokemon"></span> <br>
+            Total: <span id="totalDoPokemon"></span> <br> <br>
+            Altura: <span id="alturaDoPokemon"></span> (medida de tamanho) <br>
+            Peso: <span id="pesoDoPokemon"></span> (medida de peso) <br>
+
+            <span id="habilidadesDoPokemon" class="capitalize"></span> <br>
+
+        </p>
+    </main>
+    <script src="../Pokemon.js"></script>
+    <!-- ../ serve para buscar um arquivo em uma pasta anterior à atual (pokedex)  -->
+    <script src="../poke.js"></script>
+    <script src="app.js"></script>
 
 </body>
+
 </html>
